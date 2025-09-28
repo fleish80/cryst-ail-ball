@@ -1,2 +1,15 @@
-<app-nx-welcome></app-nx-welcome>
-<router-outlet></router-outlet>
+<nav style="display: flex; gap: 12px; padding: 12px; align-items: center;">
+  @for (link of [
+    { path: '/bar', label: 'Bar' },
+    { path: '/line', label: 'Line' },
+    { path: '/scatter', label: 'Scatter' },
+  ]; track link.path) {
+    <a [routerLink]="link.path" routerLinkActive="active">{{ link.label }}</a>
+  }
+</nav>
+<main style="padding: 12px; min-height: 60vh;">
+  <router-outlet></router-outlet>
+  <section style="margin-top: 16px; color: #666;">
+    <p>Each route renders a different Vega chart using a reusable component.</p>
+  </section>
+</main>
