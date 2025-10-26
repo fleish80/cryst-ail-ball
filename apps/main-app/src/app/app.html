@@ -24,8 +24,8 @@
   <span style="width: 1px; height: 18px; background: #ccc; margin: 0 8px;"></span>
   <strong>Render JSON:</strong>
   @for (link of [
-    { path: '/render', label: 'Vega sample', query: { src: '/vega-sample.json' } },
-    { path: '/render', label: 'Chart.js sample', query: { src: '/chartjs-sample.json' } },
+    { path: '/render/vega', label: 'Vega sample', query: { src: '/vega-sample.json' } },
+    { path: '/render/chartjs', label: 'Chart.js sample', query: { src: '/chartjs-sample.json' } },
   ]; track link.label) {
     <a [routerLink]="link.path" [queryParams]="link.query" routerLinkActive="active">{{ link.label }}</a>
   }

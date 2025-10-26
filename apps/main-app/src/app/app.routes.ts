@@ -4,8 +4,21 @@ export const appRoutes: Route[] = [
   { path: '', pathMatch: 'full', redirectTo: 'vega/bar' },
   {
     path: 'render',
-    loadComponent: () => import('./examples/render-from-json').then((m) => m.RenderFromJsonPageComponent),
-    title: 'Render from JSON',
+    children: [
+      {
+        path: 'vega',
+        loadComponent: () =>
+          import('./examples/render-vega-from-json').then((m) => m.RenderVegaFromJsonPageComponent),
+        title: 'Render Vega from JSON',
+      },
+      {
+        path: 'chartjs',
+        loadComponent: () =>
+          import('./examples/render-chartjs-from-json').then((m) => m.RenderChartJsFromJsonPageComponent),
+        title: 'Render Chart.js from JSON',
+      },
+      { path: '', pathMatch: 'full', redirectTo: 'vega' },
+    ],
   },
   {
     path: 'vega',
