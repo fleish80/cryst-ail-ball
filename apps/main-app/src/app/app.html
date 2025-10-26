@@ -1,15 +1,38 @@
-<nav style="display: flex; gap: 12px; padding: 12px; align-items: center;">
+<nav style="display: flex; gap: 12px; padding: 12px; align-items: center; flex-wrap: wrap;">
+  <strong>Vega:</strong>
   @for (link of [
-    { path: '/bar', label: 'Bar' },
-    { path: '/line', label: 'Line' },
-    { path: '/scatter', label: 'Scatter' },
+    { path: '/vega/bar', label: 'Bar' },
+    { path: '/vega/line', label: 'Line' },
+    { path: '/vega/scatter', label: 'Scatter' },
+    { path: '/vega/pie', label: 'Pie' },
+    { path: '/vega/radar', label: 'Radar' },
   ]; track link.path) {
     <a [routerLink]="link.path" routerLinkActive="active">{{ link.label }}</a>
+  }
+
+  <span style="width: 1px; height: 18px; background: #ccc; margin: 0 8px;"></span>
+  <strong>Chart.js:</strong>
+  @for (link of [
+    { path: '/chartjs/bar', label: 'Bar' },
+    { path: '/chartjs/line', label: 'Line' },
+    { path: '/chartjs/pie', label: 'Pie' },
+    { path: '/chartjs/scatter', label: 'Scatter' },
+    { path: '/chartjs/radar', label: 'Radar' },
+  ]; track link.path) {
+    <a [routerLink]="link.path" routerLinkActive="active">{{ link.label }}</a>
+  }
+  <span style="width: 1px; height: 18px; background: #ccc; margin: 0 8px;"></span>
+  <strong>Render JSON:</strong>
+  @for (link of [
+    { path: '/render', label: 'Vega sample', query: { src: '/vega-sample.json' } },
+    { path: '/render', label: 'Chart.js sample', query: { src: '/chartjs-sample.json' } },
+  ]; track link.label) {
+    <a [routerLink]="link.path" [queryParams]="link.query" routerLinkActive="active">{{ link.label }}</a>
   }
 </nav>
 <main style="padding: 12px; min-height: 60vh;">
   <router-outlet></router-outlet>
   <section style="margin-top: 16px; color: #666;">
-    <p>Each route renders a different Vega chart using a reusable component.</p>
+    <p>Each route renders a different chart using a reusable component. Vega and Chart.js are separated by outer routes.</p>
   </section>
 </main>

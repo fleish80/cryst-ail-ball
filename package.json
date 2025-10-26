@@ -17,6 +17,7 @@
     "vega": "^6.2.0",
     "vega-embed": "^7.0.2",
     "vega-lite": "^6.4.1",
+    "chart.js": "^4.4.6",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
